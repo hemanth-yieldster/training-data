@@ -15,6 +15,7 @@ const provider = new Web3.providers.WebsocketProvider(infura_provider, {
   },
 });
 let web3 = new Web3(provider);
+const toBN = web3.utils.toBN
 let base_virtual_price = 0;
 let base_cache_updated = 0;
 const PRECISION = 10 ** 18;
@@ -60,16 +61,16 @@ const getD = async (xp, amp) => {
   if (S == 0) return 0;
   let D = S;
   //   console.log("D ", D);
-  let Ann = amp * N_COINS;
+  let Ann = BigInt(toBN(amp) * toBN(N_COINS));
   for (i = 0; i <= 255; i++) {
-    let D_P = D;
+    let D_P = toBN(D);
     for (j = 0; j < xp.length; j++) {
-      D_P = (D_P * D) / (xp[j] * N_COINS);
+      D_P = BigInt((toBN(D_P) * toBN(D)) / (toBN(xp[j]) * toBN(N_COINS)));
     }
-    Dprev = D;
+    Dprev = toBN(D);
     D =
-      (((Ann * S) / A_PRECISION + D_P * N_COINS) * D) /
-      (((Ann - A_PRECISION) * D) / A_PRECISION + (N_COINS + 1) * D_P);
+      BigInt((((toBN(Ann) * toBN(S)) / toBN(A_PRECISION) + toBN(D_P) * toBN(N_COINS)) * toBN(D)) /
+      (((toBN(Ann) - toBN(A_PRECISION)) * toBN(D)) / toBN(A_PRECISION) + (toBN(N_COINS) + toBN(1)) * toBN(D_P)));
     if (D > Dprev) {
       if (D - Dprev <= 1) {
         // console.log("inside if D: ", D);
@@ -92,7 +93,7 @@ const xp_mem = (vp_rates, _balances) => {
   let result = [1000000000000000000, 1000000000000000000];
   result[1] = vp_rates;
   [0, 1].forEach((i) => {
-    result[i] = (result[i] * _balances[i]) / PRECISION;
+    result[i] = BigInt((toBN(result[i]) * toBN(_balances[i])) / toBN(PRECISION));
   });
   return result;
 };
@@ -113,9 +114,10 @@ const PoolExchange = async (block_number, contract, base_pool_contract) => {
   return { old_balances, D_val, timeStamp };
 };
 
-exports.curveV2PoolData = async (req, res) => {
+const curveV2PoolData = async () => {
+  console.log("in fn")
   let poolList = await getMonthBlocks();
-  res.send("reaced curve V2");
+  // res.send("reaced curve V2");
   base_pool_contract = new web3.eth.Contract(
     curveBasePool,
     "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7"
@@ -131,20 +133,26 @@ exports.curveV2PoolData = async (req, res) => {
       return PoolExchange(x, contract, base_pool_contract);
     })
   );
-  values.forEach((value, index) => {
-    if (value.D_val) {
-      console.log(value);
-      const newData = new curveV2DataModel({
-        poolAddress: "0x890f4e345B1dAED0367A877a1612f86A1f86985f",
-        x: value.old_balances[0],
-        y: value.old_balances[1],
-        D: value.D_val,
-        timeStamp: value.timeStamp,
-      });
-      newData
-        .save()
-        .then(() => console.log("added"))
-        .catch((err) => console.log(err));
-    }
-  });
+
+  values.forEach((element)=>{
+    console.log(element.old_balances[0]);
+  })
+  // values.forEach((value, index) => {
+  //   if (value.D_val) {
+  //     console.log(value);
+  //     const newData = new curveV2DataModel({
+  //       poolAddress: "0x890f4e345B1dAED0367A877a1612f86A1f86985f",
+  //       x: value.old_balances[0],
+  //       y: value.old_balances[1],
+  //       D: value.D_val,
+  //       timeStamp: value.timeStamp,
+  //     });
+  //     newData
+  //       .save()
+  //       .then(() => console.log("added"))
+  //       .catch((err) => console.log(err));
+  //   }
+  // });
 };
+
+curveV2PoolData();
