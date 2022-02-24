@@ -13,7 +13,7 @@ connectToDatabase();
 
 const testFile = require("./test");
 
-app.get("/test", testFile.executeKyberSwap)
+app.get("/test", testFile.executeUniswapSwap)
 
 const PORT = process.env.PORT || 8050;
 app.listen(PORT, () => console.log(`Server listening on port : ${PORT} `));
