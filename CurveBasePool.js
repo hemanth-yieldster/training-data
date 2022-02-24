@@ -18,7 +18,7 @@ let web3 = new Web3(provider);
 let base_virtual_price = 0;
 let base_cache_updated = 0;
 const PRECISION = 10 ** 18;
-const N_COINS = 2;
+const N_COINS = 3;
 const A_PRECISION = 100;
 
 const curveV2USTPool = require("./contractABI/CurveV2Pool.json");
@@ -68,52 +68,49 @@ const getD = async (xp, amp) => {
     }
     Dprev = D;
     D =
-      (((Ann * S) / A_PRECISION + D_P * N_COINS) * D) /
-      (((Ann - A_PRECISION) * D) / A_PRECISION + (N_COINS + 1) * D_P);
+      (((Ann * S)  + D_P * N_COINS) * D) /
+      (((Ann - 1) * D)  + (N_COINS + 1) * D_P);
     if (D > Dprev) {
       if (D - Dprev <= 1) {
         // console.log("inside if D: ", D);
-        return D;
-      } else {
-        // console.log("Error first: ", i);
-      }
+        break;
+      } 
     } else {
       if (Dprev - D <= 1) {
         // console.log("inside else D: ", D);
-        return D;
-      } else {
-        // console.log("Error second: ", i);
-      }
+        break;
+      } 
     }
+    
   }
+  return D;
 };
 
-const xp_mem = (vp_rates, _balances) => {
-  let result = [1000000000000000000, 1000000000000000000];
-  result[1] = vp_rates;
-  [0, 1].forEach((i) => {
+const xp_mem = (_balances) => {
+  let result = [1000000000000000000, 1000000000000000000000000000000, 1000000000000000000000000000000];
+  [0,1,2].forEach((i) => {
     result[i] = (result[i] * _balances[i]) / PRECISION;
   });
   return result;
 };
 
 const PoolExchange = async (block_number, contract, base_pool_contract) => {
-  let rates = [1000000000000000000, 1000000000000000000];
-  const amp = 10000;
+  let rates = [1000000000000000000, 1000000000000000000000000000000, 1000000000000000000000000000000]
   let blockData = await web3.eth.getBlock(block_number);
   let timeStamp = moment(blockData.timestamp * 1000).format(
     "DD-MMM-YYYY HH:mm:ss"
   );
-  rates[1] = await vp_rate(block_number, contract, base_pool_contract);
   let old_balances = [];
-  old_balances[0] = await contract.methods.balances(0).call({}, block_number);
-  old_balances[1] = await contract.methods.balances(1).call({}, block_number);
-  let xp = xp_mem(rates[1], old_balances);
+  old_balances[0] = await base_pool_contract.methods.balances(0).call({}, block_number);
+  old_balances[1] = await base_pool_contract.methods.balances(1).call({}, block_number);
+  old_balances[2] = await base_pool_contract.methods.balances(2).call({}, block_number);
+  let xp = xp_mem(old_balances);
+  let amp = await base_pool_contract.methods.A().call({}, block_number);
   let D_val = await getD(xp, amp);
   return { old_balances, D_val, timeStamp };
 };
 
-exports.curveV2PoolData = async (req, res) => {
+const curveV2PoolData = async (req, res) => {
   let poolList = await getMonthBlocks();
   res.send("reaced curve V2");
   base_pool_contract = new web3.eth.Contract(
@@ -153,3 +150,5 @@ exports.curveV2PoolData = async (req, res) => {
   //   }
   // });
 };
+
+curveV2PoolData();
