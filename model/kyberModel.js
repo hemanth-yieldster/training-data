@@ -28,10 +28,14 @@ const kyberSchema = mongoose.Schema({
     timeStamp: {
         type: String,
         required: true
-    }
+    },
+    assetAddress: [{
+        type: String,
+        required: true
+    }]
 }, {
     versionKey: false,
-    timestamps: true
+    // timestamps: true
 })
 
 module.exports = mongoose.model('kyberPoolData', kyberSchema)

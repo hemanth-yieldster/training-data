@@ -1,7 +1,7 @@
 const Web3 = require("web3");
 const moment = require('moment');
 
-const infura_provider = "wss://mainnet.infura.io/ws/v3/af7e2e37cd6545479e7523246fbaaa08"
+const infura_provider = "wss://mainnet.infura.io/ws/v3/df57c5da4e444a4c94b362aeec143e9e"
 const provider = new Web3.providers.WebsocketProvider(infura_provider, {
     clientConfig: {
         keepalive: true,
@@ -28,12 +28,13 @@ const kyberModel = require("./model/kyberModel");
 const sushiSwapModel = require("./model/sushiSwapModel");
 const balancerModel = require("./model/balanceModel");
 const balancerV2Model = require("./model/balancerV2Model");
+const kyberRouter = require("./contractABI/KyberRouter.json");
 
 const getMonthBlocks = async () => {
     let blocksPerDay = 6500;
     let latestBlock = await web3.eth.getBlockNumber();
     let blockRange = [];
-    for (i = 180; i > 0; i--) blockRange.push(latestBlock - (blocksPerDay * i))
+    for (i = 10; i > 0; i--) blockRange.push(latestBlock - i)
     return blockRange.sort()
 }
 
@@ -93,7 +94,7 @@ let balancerPoolData = (async (poolAddress) => {
 })
 
 exports.getBalancerData = (async (req, res) => {
-    poolList = ["0x69d460e01070A7BA1bc363885bC8F4F0daa19Bf5"]
+    poolList = ["0x0d88b55317516b84e78fbba7cde3f910d5686901"]
     let a = await Promise.all(poolList.map(async (poolAddress) => {
         await balancerPoolData(poolAddress);
     }))
@@ -127,8 +128,9 @@ exports.kyberPoolData = (async (req, res) => {
     res.send("hello")
 })
 
-exports.sushiSwapPoolData = (async () => {
+exports.sushiSwapPoolData = (async (req, res) => {
     let poolList = await getMonthBlocks();
+    console.log(poolList)
     let contract = new web3.eth.Contract(sushiPool, "0xD86A120a06255Df8D4e2248aB04d4267E23aDfaA");
     let data = await Promise.all(poolList.map(async x => {
         let k = await contract.methods.kLast().call({}, x)
@@ -147,6 +149,7 @@ exports.sushiSwapPoolData = (async () => {
             .then(() => console.log("added"))
             .catch((err) => console.log(err))
     }))
+    res.send("hello")
 })
 
 let balancerV2PoolData = (async (poolAddress) => {
@@ -195,4 +198,68 @@ exports.getBalancerV2Data = (async (req, res) => {
         await balancerV2PoolData(poolAddress);
     }))
     res.send("hello")
+})
+
+exports.execRouter = (async () => {
+    let router = new web3.eth.Contract(kyberRouter, "0x1c87257F5e8609940Bc751a07BB085Bb7f8cDBE6")
+    let kyberPoolInstance = new web3.eth.Contract(kyberPool, "0x306121f1344ac5F84760998484c0176d7BFB7134")
+    let transaction = {
+        from: "0x5091aF48BEB623b3DA0A53F726db63E13Ff91df9",
+        to: "0x1c87257F5e8609940Bc751a07BB085Bb7f8cDBE6",
+        data: web3.eth.abi.encodeFunctionCall({
+            name: 'swapExactTokensForTokens',
+            type: 'function',
+            inputs: [{
+                type: 'uint256',
+                name: 'amountIn'
+            }, {
+                type: 'uint256',
+                name: 'amountOutMin'
+            }, {
+                type: 'address[]',
+                name: 'poolsPath'
+            }, {
+                type: 'address[]',
+                name: 'path'
+            }, {
+                type: 'address',
+                name: 'to'
+            }, {
+                type: 'uint256',
+                name: 'deadline'
+            }]
+        }, [
+            web3.utils.toWei("10"),
+            web3.utils.toWei("1"),
+            ["0x306121f1344ac5F84760998484c0176d7BFB7134"],
+            ["0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "0xdac17f958d2ee523a2206206994597c13d831ec7"],
+            "0x5091aF48BEB623b3DA0A53F726db63E13Ff91df9",
+            1645735333
+        ])
+    }
+    let approve = await kyberPoolInstance.methods.approve("0x1c87257F5e8609940Bc751a07BB085Bb7f8cDBE6", web3.utils.toWei("10")).call({
+        from: "0x5091aF48BEB623b3DA0A53F726db63E13Ff91df9"
+    });
+    console.log("appr: ", approve)
+
+    let response = await web3.eth.sendTransaction(transaction)
+
+    console.log("resp: ", response)
+
+})
+
+// Function to add assets to existing datas
+exports.addAssets = (async () => {
+    let data = await kyberModel.updateMany({
+        poolAddress: "0x20d6b227F4a5a2A13d520329f01bb1F8F9d2d628"
+    }, {
+        $set: {
+            assetAddress: [
+                "0x6b175474e89094c44da98b954eedeac495271d0f",
+                "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+            ]
+        }
+    })
+    if (data)
+        console.log("updated")
 })
