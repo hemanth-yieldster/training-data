@@ -1,7 +1,8 @@
 const Web3 = require("web3");
 const moment = require('moment');
 
-const infura_provider = "wss://mainnet.infura.io/ws/v3/df57c5da4e444a4c94b362aeec143e9e"
+// const infura_provider = "wss://mainnet.infura.io/ws/v3/df57c5da4e444a4c94b362aeec143e9e"
+const infura_provider = "ws://localhost:8545"
 const provider = new Web3.providers.WebsocketProvider(infura_provider, {
     clientConfig: {
         keepalive: true,
@@ -200,12 +201,13 @@ exports.getBalancerV2Data = (async (req, res) => {
     res.send("hello")
 })
 
-exports.execRouter = (async () => {
+exports.executeKyberSwap = (async () => {
     let router = new web3.eth.Contract(kyberRouter, "0x1c87257F5e8609940Bc751a07BB085Bb7f8cDBE6")
     let kyberPoolInstance = new web3.eth.Contract(kyberPool, "0x306121f1344ac5F84760998484c0176d7BFB7134")
     let transaction = {
         from: "0x5091aF48BEB623b3DA0A53F726db63E13Ff91df9",
         to: "0x1c87257F5e8609940Bc751a07BB085Bb7f8cDBE6",
+        gas: 1400000,
         data: web3.eth.abi.encodeFunctionCall({
             name: 'swapExactTokensForTokens',
             type: 'function',
@@ -230,11 +232,11 @@ exports.execRouter = (async () => {
             }]
         }, [
             web3.utils.toWei("10"),
-            web3.utils.toWei("1"),
+            web3.utils.toWei("0"),
             ["0x306121f1344ac5F84760998484c0176d7BFB7134"],
-            ["0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "0xdac17f958d2ee523a2206206994597c13d831ec7"],
+            ["0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "0xdAC17F958D2ee523a2206206994597C13D831ec7"],
             "0x5091aF48BEB623b3DA0A53F726db63E13Ff91df9",
-            1645735333
+            1645746311
         ])
     }
     let approve = await kyberPoolInstance.methods.approve("0x1c87257F5e8609940Bc751a07BB085Bb7f8cDBE6", web3.utils.toWei("10")).call({
@@ -242,10 +244,21 @@ exports.execRouter = (async () => {
     });
     console.log("appr: ", approve)
 
-    let response = await web3.eth.sendTransaction(transaction)
-
-    console.log("resp: ", response)
-
+    let signPromise = await web3.eth.accounts.signTransaction(
+        transaction,
+        "63f199a49e62ce84ca7266f30338e46674984b02e20d5a41634fc0fbbd15f4d6"
+    );
+    const sentTx = web3.eth.sendSignedTransaction(
+        signPromise.raw || signPromise.rawTransaction
+    );
+    sentTx.on("receipt", async (receipt) => {
+        console.log(
+            `Transaction success! gas:- ${receipt.gasUsed} txnHash:- ${receipt.transactionHash}`
+        );
+    });
+    sentTx.on("error", async (err) => {
+        console.log(`Transaction error! Error:- ${err.message}`);
+    });
 })
 
 // Function to add assets to existing datas
