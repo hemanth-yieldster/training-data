@@ -33,6 +33,38 @@ const sushiSwapModel = require("./model/sushiSwapModel");
 const balancerModel = require("./model/balanceModel");
 const balancerV2Model = require("./model/balancerV2Model");
 
+function to18(n) {
+    return web3.utils.toWei(n, "ether");
+}
+
+function from18(n) {
+    return web3.utils.fromWei(n, "ether");
+}
+
+function to6(n) {
+    return web3.utils.toWei(n, "Mwei");
+}
+
+function from6(n) {
+    return web3.utils.fromWei(n, "Mwei");
+}
+
+function to8(n) {
+    return (n * (10 ** 8)).toString();
+}
+
+function from8(n) {
+    return (n / (10 ** 8)).toString();
+}
+
+function to2(n) {
+    return (n * (10 ** 2)).toString();
+}
+
+function from2(n) {
+    return (n / (10 ** 2)).toString();
+}
+
 const getMonthBlocks = async () => {
     let blocksPerDay = 6500;
     let latestBlock = await web3.eth.getBlockNumber();
@@ -207,6 +239,8 @@ exports.getBalancerV2Data = (async (req, res) => {
 exports.executeKyberSwap = (async () => {
     let router = new web3.eth.Contract(kyberRouter, "0x1c87257F5e8609940Bc751a07BB085Bb7f8cDBE6")
     let kyberPoolInstance = new web3.eth.Contract(kyberPool, "0x306121f1344ac5F84760998484c0176d7BFB7134")
+    let tokenInstance = new web3.eth.Contract(IERC20, "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48");
+
     let transaction = {
         from: "0x5091aF48BEB623b3DA0A53F726db63E13Ff91df9",
         to: "0x1c87257F5e8609940Bc751a07BB085Bb7f8cDBE6",
@@ -234,18 +268,19 @@ exports.executeKyberSwap = (async () => {
                 name: 'deadline'
             }]
         }, [
-            web3.utils.toWei("10"),
-            web3.utils.toWei("0"),
+            to6("10"),
+            to6("0"),
             ["0x306121f1344ac5F84760998484c0176d7BFB7134"],
             ["0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "0xdAC17F958D2ee523a2206206994597C13D831ec7"],
             "0x5091aF48BEB623b3DA0A53F726db63E13Ff91df9",
-            1645746311
+            1645807260
         ])
     }
-    let approve = await kyberPoolInstance.methods.approve("0x1c87257F5e8609940Bc751a07BB085Bb7f8cDBE6", web3.utils.toWei("10")).call({
+
+    let tokenApprove = await tokenInstance.methods.approve("0x1c87257F5e8609940Bc751a07BB085Bb7f8cDBE6", to6("20")).call({
         from: "0x5091aF48BEB623b3DA0A53F726db63E13Ff91df9"
     });
-    console.log("appr: ", approve)
+    console.log("tokenApprove: ", tokenApprove)
 
     let signPromise = await web3.eth.accounts.signTransaction(
         transaction,
@@ -266,8 +301,8 @@ exports.executeKyberSwap = (async () => {
 
 // Function to execute swap using sushi swap
 exports.executeSushiSwap = (async () => {
-    let router = new web3.eth.Contract(sushiSwapRouter, "0xd9e1cE17f2641f24aE83637ab66a2cca9C378B9F")
-    // let kyberPoolInstance = new web3.eth.Contract(sushiPool, "0x306121f1344ac5F84760998484c0176d7BFB7134")
+    let sushiPoolInstance = new web3.eth.Contract(sushiPool, "0xAaF5110db6e744ff70fB339DE037B990A20bdace");
+    let tokenInstance = new web3.eth.Contract(IERC20, "0x6b175474e89094c44da98b954eedeac495271d0f");
     let transaction = {
         from: "0x5091aF48BEB623b3DA0A53F726db63E13Ff91df9",
         to: "0xd9e1cE17f2641f24aE83637ab66a2cca9C378B9F",
@@ -292,17 +327,23 @@ exports.executeSushiSwap = (async () => {
                 name: 'deadline'
             }]
         }, [
-            web3.utils.toWei("10"),
-            web3.utils.toWei("0"),
-            ["0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "0xdAC17F958D2ee523a2206206994597C13D831ec7"],
+            10000000,
+            1000000,
+            ["0x6b175474e89094c44da98b954eedeac495271d0f", "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"],
             "0x5091aF48BEB623b3DA0A53F726db63E13Ff91df9",
-            1645746311
+            1645807260
         ])
     }
-    // let approve = await kyberPoolInstance.methods.approve("0x1c87257F5e8609940Bc751a07BB085Bb7f8cDBE6", web3.utils.toWei("10")).call({
+
+    // let approve = await sushiPoolInstance.methods.approve("0xAaF5110db6e744ff70fB339DE037B990A20bdace", to18("10")).call({
     //     from: "0x5091aF48BEB623b3DA0A53F726db63E13Ff91df9"
     // });
     // console.log("appr: ", approve)
+
+    let tokenApprove = await tokenInstance.methods.approve("0xd9e1cE17f2641f24aE83637ab66a2cca9C378B9F", 10000000).call({
+        from: "0x5091aF48BEB623b3DA0A53F726db63E13Ff91df9"
+    });
+    console.log("tokenApprove: ", tokenApprove)
 
     let signPromise = await web3.eth.accounts.signTransaction(
         transaction,
@@ -324,7 +365,6 @@ exports.executeSushiSwap = (async () => {
 // Function to execute swap using uniswap
 exports.executeUniswapSwap = (async () => {
     let router = new web3.eth.Contract(uniswapRouter, "0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45")
-    // let kyberPoolInstance = new web3.eth.Contract(sushiPool, "0x306121f1344ac5F84760998484c0176d7BFB7134")
     let transaction = {
         from: "0x5091aF48BEB623b3DA0A53F726db63E13Ff91df9",
         to: "0xd9e1cE17f2641f24aE83637ab66a2cca9C378B9F",
@@ -347,7 +387,7 @@ exports.executeUniswapSwap = (async () => {
             }]
         }, [
             web3.utils.toWei("10"),
-            web3.utils.toWei("0"),
+            to6("0"),
             ["0x6b175474e89094c44da98b954eedeac495271d0f", "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"],
             "0x5091aF48BEB623b3DA0A53F726db63E13Ff91df9",
         ])
@@ -388,4 +428,40 @@ exports.addAssets = (async () => {
     })
     if (data)
         console.log("updated")
+})
+
+
+exports.encodeKyber = (async () => {
+    let encodedData = await web3.eth.abi.encodeFunctionCall({
+        name: 'swapExactTokensForTokens',
+        type: 'function',
+        inputs: [{
+            type: 'uint256',
+            name: 'amountIn'
+        }, {
+            type: 'uint256',
+            name: 'amountOutMin'
+        }, {
+            type: 'address[]',
+            name: 'poolsPath'
+        }, {
+            type: 'address[]',
+            name: 'path'
+        }, {
+            type: 'address',
+            name: 'to'
+        }, {
+            type: 'uint256',
+            name: 'deadline'
+        }]
+    }, [
+        to6("10"),
+        to6("0"),
+        ["0x306121f1344ac5F84760998484c0176d7BFB7134"],
+        ["0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "0xdAC17F958D2ee523a2206206994597C13D831ec7"],
+        "0x5091aF48BEB623b3DA0A53F726db63E13Ff91df9",
+        1645807260
+    ])
+
+    console.log("encodedData: ", encodedData);
 })
