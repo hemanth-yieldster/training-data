@@ -47,9 +47,9 @@ const CurveEncodeFunction = async()=>{
     let _amount = to18("10");
 
     if (dai.methods.allowance(msgSender, _spender) > 0) {
-        dai.methods.approve(_spender, 0);
-        dai.methods.approve(_spender, _amount);
-    } else dai.methods.approve(_spender, _amount);
+        dai.methods.approve(_spender, 0).call({from:msgSender});
+        dai.methods.approve(_spender, _amount).call({from:msgSender});
+    } else dai.methods.approve(_spender, _amount).call({from:msgSender});
 
 
     let instruction = web3.eth.abi.encodeFunctionCall({
