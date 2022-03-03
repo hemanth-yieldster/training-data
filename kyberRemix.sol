@@ -15,6 +15,7 @@ interface IRouter{
 }
 
 //swap usdc to get usdt
+//addressEncoded works
 contract Kyber{
 
     using SafeERC20 for IERC20;
@@ -23,6 +24,10 @@ contract Kyber{
     address public pool = 0x306121f1344ac5F84760998484c0176d7BFB7134;
     address public usdc = 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48;
     address public usdt = 0xdAC17F958D2ee523a2206206994597C13D831ec7;
+
+    bytes  public addressIERC20Encoded;
+    bytes  public ierc20Encoded;
+    bytes  public addressEncoded;
     
     function swap() public returns (uint256[] memory amounts) {
 
@@ -36,8 +41,35 @@ contract Kyber{
         return IRouter(router).swapExactTokensForTokens(10000000,1000000,
         poolsPath,
         path,
-        address(this),1645807260);
+        address(this),1646256514);
         
+    }
+
+    function encoded() public {
+        address[] memory poolsPath =  new address[](1);
+        poolsPath[0] = 1000000;
+        IERC20[] memory path =  new IERC20[](2);
+        path[0] = IERC20(usdc);
+        path[1] = IERC20(usdt);
+        address[] memory pathNew = new address[](2);
+        pathNew[0] = usdc;
+        pathNew[1] = usdt;
+        _approveToken(usdc,pool,20000000);
+        _approveToken(usdc,router,20000000);
+
+
+        addressIERC20Encoded = abi.encodeWithSignature("swapExactTokensForTokens(uint256,uint256,address[],address[],address,uint256)",10000000,1000000,poolsPath,path,address(this),1646256514);
+        ierc20Encoded = abi.encodeWithSignature("swapExactTokensForTokens(uint256,uint256,address[],IERC20[],address,uint256)",10000000,1000000,poolsPath,path,address(this),1646256514);
+        addressEncoded = abi.encodeWithSignature("swapExactTokensForTokens(uint256,uint256,address[],address[],address,uint256)",10000000,1000000,poolsPath,pathNew,address(this),1646256514);
+
+
+    }
+
+    function encodeSwap(bytes memory data) public {
+        (bool result, ) = router.call(data);
+        if(!result){
+            revert("Transaction failed");
+        }
     }
 
     function balance() public view returns(uint256,uint256){

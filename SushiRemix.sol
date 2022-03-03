@@ -14,7 +14,8 @@ interface IRouter{
 }
 
 
-//swap usdc to get dai
+//usdc -> dai
+//addressUint256Encoded is the encoded data
 contract Sushi{
 
     using SafeERC20 for IERC20;
@@ -23,7 +24,9 @@ contract Sushi{
     address public pool = 0xAaF5110db6e744ff70fB339DE037B990A20bdace;
     address public usdc = 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48;
     address public dai = 0x6B175474E89094C44Da98b954EedeAC495271d0F;
-    
+    bytes public addressEncoded;
+    bytes public addressUint256Encoded;
+
     function swap() public returns (uint256[] memory amounts) {
 
         // address[] memory poolsPath =  new address[](1);
@@ -35,8 +38,28 @@ contract Sushi{
         _approveToken(usdc,router,20000000);
         return IRouter(router).swapExactTokensForTokens(10000000,1000000000000000000,
         path,
-        address(this),1645807260);
+        address(this),1646256514);
         
+    }
+
+    function encoded() public {
+        address[] memory path =  new address[](2);
+        path[0] = usdc;
+        path[1] = dai;
+        // _approveToken(usdc,pool,20000000);
+        _approveToken(usdc,router,20000000);
+
+        addressEncoded = abi.encodeWithSignature("swapExactTokensForTokens(uint,uint,address[],address,uint)",10000000,1000000000000000000,path,address(this),1646256514);
+        addressUint256Encoded = abi.encodeWithSignature("swapExactTokensForTokens(uint256,uint256,address[],address,uint256)",10000000,1000000000000000000,path,address(this),1646256514);
+
+
+    }
+
+    function encodeSwap(bytes memory data) public {
+        (bool result, ) = router.call(data);
+        if(!result){
+            revert("Transaction failed");
+        }
     }
 
     function balance() public view returns(uint256,uint256){

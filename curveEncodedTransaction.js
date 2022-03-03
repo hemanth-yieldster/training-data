@@ -39,20 +39,20 @@ function to18(n) {
   );
 
 const CurveEncodeFunction = async()=>{
-    let msgSender = "0xed4676ad9A0Cf24d2e504C2e3DAD23B836DE455e";
+    // let msgSender = "0xed4676ad9A0Cf24d2e504C2e3DAD23B836DE455e";
 
-    console.log("dai  : ", await dai.methods.balanceOf(msgSender).call())
+    // console.log("dai  : ", await dai.methods.balanceOf(msgSender).call())
     
-    let _spender = "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7";
-    let _amount = to18("10");
+    // let _spender = "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7";
+    // let _amount = to18("10");
 
-    if (dai.methods.allowance(msgSender, _spender) > 0) {
-        dai.methods.approve(_spender, 0).call({from:msgSender});
-        dai.methods.approve(_spender, _amount).call({from:msgSender});
-    } else dai.methods.approve(_spender, _amount).call({from:msgSender});
+    // if (dai.methods.allowance(msgSender, _spender) > 0) {
+    //     dai.methods.approve(_spender, 0).call({from:msgSender});
+    //     dai.methods.approve(_spender, _amount).call({from:msgSender});
+    // } else dai.methods.approve(_spender, _amount).call({from:msgSender});
 
 
-    let instruction = web3.eth.abi.encodeFunctionCall({
+    let instruction = await web3.eth.abi.encodeFunctionCall({
         name: "exchange",
         type: "function",
         inputs: [
@@ -73,32 +73,16 @@ const CurveEncodeFunction = async()=>{
                 name: "min_dy"
             }
         ]
-    }, [0,1,to18("10"),to6("1")]);
+    }, [1,0,to6("10"),to18("1")]);
 
-    let transaction = {
-        from : msgSender,
-        to:_spender,
-        data:instruction,
-        gas:1400000
-    }
+    console.log("instruction ",instruction);
+                //0x3df021240000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000009896800000000000000000000000000000000000000000000000000de0b6b3a7640000
 
-    console.log("instruction",instruction)
+    let instNew = "0x3df021240000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009896800000000000000000000000000000000000000000000000000de0b6b3a7640000"
+    if(instNew == instruction.toString()){
+      console.log("same")
+  }
 
-    let signed = await web3.eth.accounts.signTransaction(transaction,"653ba3aa27e5c2fddf6bf9e77303f4de291081b99f70c57538362fd1b4ea97ce")
-    console.log("sign ",signed)
-    try{
-        let sentTx = await web3.eth.sendSignedTransaction(signed.raw||signed.rawTransaction)
-        sentTx.on("receipt", async (receipt) => {
-            console.log(`
-                Transaction success! gas:- ${receipt.gasUsed} txnHash:- ${receipt.transactionHash}
-            `);
-        });
-        sentTx.on("error", async (err) => {
-            console.log(`Transaction error! Error:- ${err.message}`);
-        });
-    }catch(err){
-        console.log("errorrrrr",err.message);
-    }
     
 }
 

@@ -16,6 +16,7 @@ contract Curve{
     address public pool = 0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7;
     address public usdc = 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48;
     address public dai = 0x6B175474E89094C44Da98b954EedeAC495271d0F;
+    bytes public addressEncoded;
     
     function swap() public {
 
@@ -30,6 +31,24 @@ contract Curve{
         10000000,
         1000000000000000000);
         
+    }
+
+    function encode() public {
+        address[] memory path =  new address[](2);
+        path[0] = usdc;
+        path[1] = dai;
+        // _approveToken(usdc,pool,20000000);
+        _approveToken(usdc,pool,20000000);
+
+        addressEncoded = abi.encodeWithSignature("exchange(int128,int128,uint256,uint256)",1,0,10000000,1000000000000000000);
+
+    }
+
+    function encodedSwap(bytes memory data) public {
+        (bool result, ) = pool.call(data);
+        if(!result){
+            revert("Transaction failed");
+        }
     }
 
     function balance() public view returns(uint256,uint256){

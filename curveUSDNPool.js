@@ -115,9 +115,9 @@ const PoolExchange = async (block_number, contract, base_pool_contract) => {
   return { old_balances, D_val, timeStamp };
 };
 
-exports.curveV2PoolData = async (req, res) => {
+const curveV2PoolData = async (req, res) => {
   let poolList = await getMonthBlocks();
-  res.send("reaced curve V2");
+  console.log("reaced curve V2");
   base_pool_contract = new web3.eth.Contract(
     curveBasePool,
     "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7"
@@ -155,3 +155,4 @@ exports.curveV2PoolData = async (req, res) => {
   //   }
   // });
 };
+curveV2PoolData();

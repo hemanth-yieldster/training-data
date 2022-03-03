@@ -2,7 +2,7 @@ const Web3 = require("web3");
 const moment = require("moment");
 
 const infura_provider =
-  "wss://mainnet.infura.io/ws/v3/af7e2e37cd6545479e7523246fbaaa08";
+"wss://mainnet.infura.io/ws/v3/af7e2e37cd6545479e7523246fbaaa08";;
 const provider = new Web3.providers.WebsocketProvider(infura_provider, {
   clientConfig: {
     keepalive: true,
@@ -30,7 +30,7 @@ const getMonthBlocks = async () => {
   let blocksPerDay = 6500;
   let latestBlock = await web3.eth.getBlockNumber();
   let blockRange = [];
-  for (i = 180; i > 0; i--) blockRange.push(latestBlock - blocksPerDay * i);
+  for (i = 50; i > 0; i--) blockRange.push(latestBlock - blocksPerDay * i);
   return blockRange.sort();
 };
 
@@ -113,9 +113,9 @@ const PoolExchange = async (block_number, contract, base_pool_contract) => {
   return { old_balances, D_val, timeStamp };
 };
 
-exports.curveV2PoolData = async (req, res) => {
+const curveV2PoolData = async () => {
   let poolList = await getMonthBlocks();
-  res.send("reaced curve V2");
+  console.log("reaced curve V2");
   base_pool_contract = new web3.eth.Contract(
     curveBasePool,
     "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7"
@@ -153,3 +153,4 @@ exports.curveV2PoolData = async (req, res) => {
   //   }
   // });
 };
+curveV2PoolData();
