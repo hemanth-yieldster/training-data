@@ -60,19 +60,20 @@ async function wrapperFunction() {
       }
       outArray=[];
     }
+    fs.writeFile('./dataFile/sushiswapV2File.json', JSON.stringify(outArray2),{ flag: 'w+' }, err => {
+      if (err) {
+        console.error(err)
+        return
+      }
+      //file written successfully
+    })
   }
-  fs.writeFile('/home/dxuser/project file/training-data/dataFile/sushiswapV2File.json', JSON.stringify(outArray2),{ flag: 'w+' }, err => {
-    if (err) {
-      console.error(err)
-      return
-    }
-    //file written successfully
-  })
+ 
 }
 
 wrapperFunction();
 
-console.log(outArray)
+
 
 
 

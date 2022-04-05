@@ -64,7 +64,7 @@ async function wrapperFunction() {
 
         }  
         outArray=[];
-    }fs.writeFile('/home/dxuser/project file/training-data/dataFile/uniswapV2File.json', JSON.stringify(outArray2),{ flag: 'w+' }, err => {
+    }fs.writeFile('./dataFile/uniswapV2File.json', JSON.stringify(outArray2),{ flag: 'w+' }, err => {
       if (err) {
         console.error(err)
         return
