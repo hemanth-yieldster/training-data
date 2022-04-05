@@ -60,14 +60,15 @@ async function wrapperFunction() {
       }
       outArray=[];
     }
+    fs.writeFile('./dataFile/kyberswapV2File.json', JSON.stringify(outArray2),{ flag: 'w+' }, err => {
+      if (err) {
+        console.error(err)
+        return
+      }
+      //file written successfully
+    })
   }
-  fs.writeFile('./dataFile/kyberswapV2File.json', JSON.stringify(outArray2),{ flag: 'w+' }, err => {
-    if (err) {
-      console.error(err)
-      return
-    }
-    //file written successfully
-  })
+  
 }
 wrapperFunction();
 
