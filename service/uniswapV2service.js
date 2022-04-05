@@ -64,27 +64,20 @@ async function wrapperFunction() {
 
         }  
         outArray=[];
-    }
+    }fs.writeFile('/home/dxuser/project file/training-data/dataFile/uniswapV2File.json', JSON.stringify(outArray2),{ flag: 'w+' }, err => {
+      if (err) {
+        console.error(err)
+        return
+      }
+      //file written successfully
+    })
    
     
   }
-  fs.writeFile('/home/dxuser/project file/training-data/dataFile/uniswapV2File.json', JSON.stringify(outArray2),{ flag: 'w+' }, err => {
-    if (err) {
-      console.error(err)
-      return
-    }
-    //file written successfully
-  })
+  
  
 }
 //outArray2.push.apply(outArray2,outArray);
 wrapperFunction();
 
-// fs.writeFile('/home/dxuser/project file/training-data/dataFile/uniswapV2File.txt', JSON.stringify(outArray),{ flag: 'a+' }, err => {
-//   if (err) {
-//     console.error(err)
-//     return
-//   }
-//   //file written successfully
-// })
-console.log(outArray)
+

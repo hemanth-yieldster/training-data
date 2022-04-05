@@ -39,29 +39,6 @@ function addressExtractor(line, index) {
   return address[1];
 }
 
-// for (i = 0; i < lineArray.length - 1; i++) {
-//   for (j = i + 1; j < lineArray.length; j++) {
-//     const address1 = web3.utils.toChecksumAddress(
-//       addressExtractor(lineArray[i])
-//     );
-//     const address2 = web3.utils.toChecksumAddress(
-//       addressExtractor(lineArray[j])
-//     );
-
-//     callChainFunction(address1, address2)
-//       .then((response) => {
-//         if (response.length > 0) {
-//           console.log("response : ", response);
-//         }
-//         // "response" is an array of addresses
-//       })
-//       .catch((e) => {
-//         console.log("exception: ", e);
-//       });
-//   }
-// }
-
-
 async function wrapperFunction() {
   for (i = 0; i < lineArray.length - 1; i++) {
     for (j = i + 1; j < lineArray.length; j++) {
@@ -81,28 +58,17 @@ async function wrapperFunction() {
         console.log(outArray);
         outArray2.push(outArray)
       }
+      outArray=[];
     }
   }
+  fs.writeFile('./dataFile/kyberswapV2File.json', JSON.stringify(outArray2),{ flag: 'w+' }, err => {
+    if (err) {
+      console.error(err)
+      return
+    }
+    //file written successfully
+  })
 }
 wrapperFunction();
 
-// async function callChainFunction(address1, address2) {
-//   try {
-//     const response = await kyberSwapV2Factory.methods
-//       .getPools(address1, address2)
-//       .call();
-//     return response;
-//   } catch (e) {
-//     console.log("exception: ", e);
-//   }
-// }
 
-
-
-
-
-
-// callChainFunction(
-//   "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
-//   "0xdac17f958d2ee523a2206206994597c13d831ec7"
-// );
