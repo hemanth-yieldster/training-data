@@ -18,6 +18,9 @@ const loadFiles = fs.readFileSync(
   "utf8"
 );
 
+
+
+
 let lineArray = [];
 loadFiles.split(/\r?\n/).forEach((line) => {
   lineArray.push(line);
@@ -31,6 +34,7 @@ let outArray2=[];
 function addressExtractor(line, index) {
   const tempArray = line.split(":");
   const arr=tempArray[0].split('"')
+  console.log("trying to reach",arr[1]);
 
   outArray.push({"token":arr[1]});
 
@@ -54,7 +58,7 @@ async function wrapperFunction() {
         .getPair(address1, address2)
         .call();
 
-        //console.log("response : ", response);
+      console.log("response : ", response);
       if (!(response == "0x0000000000000000000000000000000000000000")) {
        // console.log("response : ", response);
         outArray.push({"poolAddress":response});

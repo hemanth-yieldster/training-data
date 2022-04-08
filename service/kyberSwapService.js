@@ -1,6 +1,7 @@
 const Web3 = require("web3");
 const web3 = new Web3(
-  "https://mainnet.infura.io/v3/1f0e05aa0b5c4ece90db3baebbf4ec4d"
+  //"https://mainnet.infura.io/v3/1f0e05aa0b5c4ece90db3baebbf4ec4d"
+  "https://mainnet.infura.io/v3/6b7e574215f04cd3b9ec93f791a8b6c6"
 );
 const fs = require("fs");
 
@@ -15,6 +16,8 @@ const loadFiles = fs.readFileSync(
   "/home/dxuser/project file/training-data/assetList.txt",
   "utf8"
 );
+
+
 
 let lineArray = [];
 loadFiles.split(/\r?\n/).forEach((line) => {
@@ -33,6 +36,7 @@ var outArray2=[];
 function addressExtractor(line, index) {
   const tempArray = line.split(":");
   const arr=tempArray[0].split('"')
+  console.log("try to reach:",arr[1]);
   outArray.push({"token":arr[1]});
   const tempArray2 = tempArray[1].split(",");
   const address = tempArray2[0].split('"');
@@ -52,8 +56,9 @@ async function wrapperFunction() {
       const response = await kyberSwapV2Factory.methods
       .getPools(address1, address2)
       .call();
+
       if (response.length > 0) {
-        //console.log("response : ", response);
+        console.log("response : ", response);
         outArray.push({"poolAddress":response});
         console.log(outArray);
         outArray2.push(outArray)

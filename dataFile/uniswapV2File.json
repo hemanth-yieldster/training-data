@@ -12769,5 +12769,1341 @@
         {
             "poolAddress": "0x58Ce2c05f73F64b6b23d2fc2A20424D5061F473F"
         }
+    ],
+    [
+        {
+            "token": "_1MIL"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xBeE12364eCc0450A663DA84ECba39fBF9e74600a"
+        }
+    ],
+    [
+        {
+            "token": "_1MT"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x7e889b530612BC54e97436a9809F8258944C9AC5"
+        }
+    ],
+    [
+        {
+            "token": "_2CRZ"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xFd52dD9D4d6837A355EB5518Acb2A55769A13F92"
+        }
+    ],
+    [
+        {
+            "token": "_2GT"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x9861F7187b58023d89B2C2b0767bdEE43345620A"
+        }
+    ],
+    [
+        {
+            "token": "_2KEY"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x63E7Aa05B78144013Cfa4b23C9b61599D0a29023"
+        }
+    ],
+    [
+        {
+            "token": "REALTOKEN_S_4061_GRAND_ST_DETROIT_MI"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x5b47510222Df764eFB0FABF1A7Fbf4DA163c8a5b"
+        }
+    ],
+    [
+        {
+            "token": "_4B"
+        },
+        {
+            "token": "KP3R"
+        },
+        {
+            "poolAddress": "0x65cE2C6281917aD5E18242cbDfF7fD2F1Be51967"
+        }
+    ],
+    [
+        {
+            "token": "_4B"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xf426bE19a64871c16e014B17803c6c909c990c58"
+        }
+    ],
+    [
+        {
+            "token": "_4B"
+        },
+        {
+            "token": "WBTC"
+        },
+        {
+            "poolAddress": "0xf01f713C9F45EFE53319bDEEe59fe3739886EF89"
+        }
+    ],
+    [
+        {
+            "token": "_69C"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x50A92b2bb1De408854c8FDe649ad5eA0dFcAd483"
+        }
+    ],
+    [
+        {
+            "token": "_7E"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xd90C2437Ce37635d737A35f746F5f2b6Bd38F952"
+        }
+    ],
+    [
+        {
+            "token": "_808TA"
+        },
+        {
+            "token": "UNI"
+        },
+        {
+            "poolAddress": "0xC5E0e0CE30494E138bA95162308734F32959c428"
+        }
+    ],
+    [
+        {
+            "token": "_808TA"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xFECc6f97A70A45Bb1ec32A05081392D102343c78"
+        }
+    ],
+    [
+        {
+            "token": "_8PAY"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x5B29799A983d67d83d7Bf6eC6146851C2A027a3a"
+        }
+    ],
+    [
+        {
+            "token": "AAG"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x1AFb66aa487Baa4743b4eb82a95E6e1AA9246A32"
+        }
+    ],
+    [
+        {
+            "token": "AANG"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x4d92BD60F56edD48901B49B2b16b3c7a3E5F2e6b"
+        }
+    ],
+    [
+        {
+            "token": "AAVE"
+        },
+        {
+            "token": "GHST"
+        },
+        {
+            "poolAddress": "0x3dFfF61CD4980a4248e536231cB924e1fe7f9340"
+        }
+    ],
+    [
+        {
+            "token": "AAVE"
+        },
+        {
+            "token": "AMIS"
+        },
+        {
+            "poolAddress": "0x2A3001EEbe7fb0D4F5f75eab1dDd2FCF1c9eCf52"
+        }
+    ],
+    [
+        {
+            "token": "AAVE"
+        },
+        {
+            "token": "DOLLAR_ANRX"
+        },
+        {
+            "poolAddress": "0x7BE38520aC9446d6d3492Cd0c80965E6469b7Da9"
+        }
+    ],
+    [
+        {
+            "token": "AAVE"
+        },
+        {
+            "token": "BLT"
+        },
+        {
+            "poolAddress": "0x4de632467a00F3b32F72391a48295D3F0B40c8B8"
+        }
+    ],
+    [
+        {
+            "token": "AAVE"
+        },
+        {
+            "token": "LEND"
+        },
+        {
+            "poolAddress": "0x2DBA9D75C4EEdcD6b6BbB746C8369fE8CF24B117"
+        }
+    ],
+    [
+        {
+            "token": "AAVE"
+        },
+        {
+            "token": "OCTO"
+        },
+        {
+            "poolAddress": "0x51422A628c9D86f4657C76a16278494dA9439e17"
+        }
+    ],
+    [
+        {
+            "token": "AAVE"
+        },
+        {
+            "token": "OMG"
+        },
+        {
+            "poolAddress": "0xF3259208B7C1dfFD5f02C621BeFe8438A2ECE5ED"
+        }
+    ],
+    [
+        {
+            "token": "AAVE"
+        },
+        {
+            "token": "ISLA"
+        },
+        {
+            "poolAddress": "0xCF0fD2E7c9Da2D78A9dD88cF5706E0502bfe25b4"
+        }
+    ],
+    [
+        {
+            "token": "AAVE"
+        },
+        {
+            "token": "DINT"
+        },
+        {
+            "poolAddress": "0x34a0D26419A3Ddd742894e579a9b7AA198245F21"
+        }
+    ],
+    [
+        {
+            "token": "AAVE"
+        },
+        {
+            "token": "ENJ"
+        },
+        {
+            "poolAddress": "0x44fB27C260D9Dc9b21709D8054258AE896C5a9A8"
+        }
+    ],
+    [
+        {
+            "token": "AAVE"
+        },
+        {
+            "token": "SNOW"
+        },
+        {
+            "poolAddress": "0x39FeBe55da20E6699e77c35C20F1867B3b4e054A"
+        }
+    ],
+    [
+        {
+            "token": "AAVE"
+        },
+        {
+            "token": "SPRKL"
+        },
+        {
+            "poolAddress": "0xF793ED103959c525a6BEB749A7cDbfB75489f0ca"
+        }
+    ],
+    [
+        {
+            "token": "AAVE"
+        },
+        {
+            "token": "stETH"
+        },
+        {
+            "poolAddress": "0xD3fF1cA76c0AF057E4C1E8fE359a28e23655cEfE"
+        }
+    ],
+    [
+        {
+            "token": "AAVE"
+        },
+        {
+            "token": "UNI"
+        },
+        {
+            "poolAddress": "0xDbb317929A4924e032bc21add1ce8e30A978C257"
+        }
+    ],
+    [
+        {
+            "token": "AAVE"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xDFC14d2Af169B0D36C4EFF567Ada9b2E0CAE044f"
+        }
+    ],
+    [
+        {
+            "token": "AAVE"
+        },
+        {
+            "token": "WBTC"
+        },
+        {
+            "poolAddress": "0x48978eF5BeB2d69e27DeF9C046cEbE18Ab5708Ad"
+        }
+    ],
+    [
+        {
+            "token": "AAVE"
+        },
+        {
+            "token": "YFI"
+        },
+        {
+            "poolAddress": "0x49604b4bC98f1196D4B2116f8a1Fac64ab69cef8"
+        }
+    ],
+    [
+        {
+            "token": "aBUSD"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x1ad0dBd734fA4601148eDE020b6e9444f1CC3E22"
+        }
+    ],
+    [
+        {
+            "token": "aDAI"
+        },
+        {
+            "token": "AMPL"
+        },
+        {
+            "poolAddress": "0xE104385168dA45bED811d76D2D804e445A891D67"
+        }
+    ],
+    [
+        {
+            "token": "aDAI"
+        },
+        {
+            "token": "ONS"
+        },
+        {
+            "poolAddress": "0xd541E6aD95cc58F391d84fB8C1A62Bbc629542C9"
+        }
+    ],
+    [
+        {
+            "token": "aDAI"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x2E3BB99210EbaA7FAE82C32b244e872610107088"
+        }
+    ],
+    [
+        {
+            "token": "aDAI"
+        },
+        {
+            "token": "STAKE"
+        },
+        {
+            "poolAddress": "0x83c3AdD9Dc4786F7001B79332A21816D2A764e6F"
+        }
+    ],
+    [
+        {
+            "token": "aETH"
+        },
+        {
+            "token": "DZAR"
+        },
+        {
+            "poolAddress": "0x3F63FB86c0cD985a3542709473913342Db602C82"
+        }
+    ],
+    [
+        {
+            "token": "aETH"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x3343D8fd46Ba0469db160A82386a826214CefCb6"
+        }
+    ],
+    [
+        {
+            "token": "GHST"
+        },
+        {
+            "token": "NDR"
+        },
+        {
+            "poolAddress": "0x30D48eebf6f7602182798d1baAF8c00aDE5d54a8"
+        }
+    ],
+    [
+        {
+            "token": "GHST"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xaB659deE3030602c1aF8C29D146fAcD4aeD6EC85"
+        }
+    ],
+    [
+        {
+            "token": "aLINK"
+        },
+        {
+            "token": "SHIP"
+        },
+        {
+            "poolAddress": "0xA2c271AB9eea989e171f3c3261b3062880c65082"
+        }
+    ],
+    [
+        {
+            "token": "aSUSD"
+        },
+        {
+            "token": "sUSD"
+        },
+        {
+            "poolAddress": "0x2b79b3c3c7b35463a28A76e0D332aAB3E20AA337"
+        }
+    ],
+    [
+        {
+            "token": "aSUSD"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xe73080eE6Fe70dA38a2a2d06e9Fa09Eea4B6978d"
+        }
+    ],
+    [
+        {
+            "token": "aUNI"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x68f104827c78F2c37562c6Aca2E1fBA04393074f"
+        }
+    ],
+    [
+        {
+            "token": "aWETH"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x951304aBd476e24dC2f74912592d9aE0FC0C15cb"
+        }
+    ],
+    
+    [
+        {
+            "token": "ABBY"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x33E689F06eBAb714d61eF2d016E74bA83d56bAA0"
+        }
+    ],
+    [
+        {
+            "token": "ACCEL"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x9219DF155698B27498d4CDd5494B30cf2D3B4911"
+        }
+    ],
+    [
+        {
+            "token": "ACXT"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x3AAd000940cacdF8209d9Ee1173141f75A34ea5C"
+        }
+    ],
+    [
+        {
+            "token": "ACXT"
+        },
+        {
+            "token": "WBTC"
+        },
+        {
+            "poolAddress": "0x96C824976B440926707A54a93eD3406656B304AC"
+        }
+    ],
+    [
+        {
+            "token": "AC"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x6660551884b1cCc968662d72c2e6897a1CA4BfAc"
+        }
+    ],
+    [
+        {
+            "token": "ACR"
+        },
+        {
+            "token": "HEX"
+        },
+        {
+            "poolAddress": "0x8Dade81d4D13427BE028ff74f25cDe092518d89F"
+        }
+    ],
+    [
+        {
+            "token": "ACR"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xD3D7b1CeB661306Ce3fA323230cfC695EBB8c842"
+        }
+    ],
+    [
+        {
+            "token": "ACR"
+        },
+        {
+            "token": "WBTC"
+        },
+        {
+            "poolAddress": "0xB301821567b2C8B7A4045000427e5c1c89Bc6443"
+        }
+    ],
+    
+    
+    [
+        {
+            "token": "AAC"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xfC036F4D4fEd4516B87fA9a8F1c0D741D3F27a6F"
+        }
+    ],
+    [
+        {
+            "token": "ADAL"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x58612B4D5498Ff30CbC5d3b29c02f52E4Aa1F355"
+        }
+    ],
+    [
+        {
+            "token": "ADAPAD"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x82CB2d43db6916b8a4821AaBf18352456fc64362"
+        }
+    ],
+    [
+        {
+            "token": "ADB"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x1d00A86f9d3db4b4dc3C5eB16159c8409538Bedb"
+        }
+    ],
+    [
+        {
+            "token": "ADD"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xe805730341d3F49Dd404947cCB6F9bd6f6e978Ce"
+        }
+    ],
+    [
+        {
+            "token": "ADX"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xD3772A963790feDE65646cFdae08734A17cd0f47"
+        }
+    ],
+    [
+        {
+            "token": "ARA"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x6d2F0FabB11ea0B1F4416711758E86E86Fa7C154"
+        }
+    ],
+    [
+        {
+            "token": "ADS"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x2756AC0130232cf4F8152548524271CAEC1BA83F"
+        }
+    ],
+    [
+        {
+            "token": "ADT"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xD65bb7C7D95B8e948c6D6fD88f3EA544D7c67b59"
+        }
+    ],
+    [
+        {
+            "token": "AGLD"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xf5BB54AF516890D564643bA16c09117FdA5a98D3"
+        }
+    ],
+    [
+        {
+            "token": "ADINU"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x5Fa6D0A5020Ab5942e93385A47E99a5672A7C143"
+        }
+    ],
+    [
+        {
+            "token": "TWA"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x748a9631baD6AF6D048aE66e2e6E3F44213Fb1E0"
+        }
+    ],
+    [
+        {
+            "token": "ADCO"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x99Ab6cCfd5a873422B90FAAd3E6fdB98C1bB3417"
+        }
+    ],
+    [
+        {
+            "token": "ELF"
+        },
+        {
+            "token": "SASHIMI"
+        },
+        {
+            "poolAddress": "0x1629B0259E6E5c315B8Eea09fd1a4D0A26291F98"
+        }
+    ],
+    [
+        {
+            "token": "ELF"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xA6be7F7C6c454B364cDA446ea39Be9e5E4369DE8"
+        }
+    ],
+    [
+        {
+            "token": "AERGO"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x505a152C24B03A666E903aA6159e5F9433094893"
+        }
+    ],
+    [
+        {
+            "token": "ARNX"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x4831e261Bb90e498f64C99A222dfbfD2C820e8F9"
+        }
+    ],
+    [
+        {
+            "token": "AER"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x3F7F4fDaB80872282F621cf73434C4288C0166B9"
+        }
+    ],
+    [
+        {
+            "token": "AfroX"
+        },
+        {
+            "token": "AFDLT"
+        },
+        {
+            "poolAddress": "0xA568BCeEA24e3219Bf1B1AEf995E76e300F33B5b"
+        }
+    ],
+    [
+        {
+            "token": "AfroX"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xEb10676a236e97E214787e6A72Af44C93639BA61"
+        }
+    ],
+    [
+        {
+            "token": "AFDLT"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x60eF16af3B1392fB6f98d2d06B5eD958a373DCb5"
+        }
+    ],
+    [
+        {
+            "token": "EDC"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x7aCF849214Ee36FD4B0A9EBcb2c976667105D887"
+        }
+    ],
+    [
+        {
+            "token": "AGA"
+        },
+        {
+            "token": "FRM"
+        },
+        {
+            "poolAddress": "0x54812e90f571500373Eb89d425fc250b17318722"
+        }
+    ],
+    [
+        {
+            "token": "AGA"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x237cF2E759a3eDE62821E6bfe737e6a00658Acb8"
+        }
+    ],
+    [
+        {
+            "token": "AGVC"
+        },
+        {
+            "token": "LMY"
+        },
+        {
+            "poolAddress": "0xA0f70Df5B49a4690582a695E0E53Ae5667BD65f1"
+        }
+    ],
+    [
+        {
+            "token": "AGVC"
+        },
+        {
+            "token": "TRADE"
+        },
+        {
+            "poolAddress": "0x33098c801a6DaB552775EaB5Bd12b612B7570e4E"
+        }
+    ],
+    [
+        {
+            "token": "AGVC"
+        },
+        {
+            "token": "NPXS"
+        },
+        {
+            "poolAddress": "0x3A64c3BF93995b01438f66F8bBC94D9D031Fa5AF"
+        }
+    ],
+    [
+        {
+            "token": "AGVC"
+        },
+        {
+            "token": "SGT"
+        },
+        {
+            "poolAddress": "0xf396622364465DD199f54B1B2850fCb04c337f57"
+        }
+    ],
+    [
+        {
+            "token": "AGVC"
+        },
+        {
+            "token": "UNI"
+        },
+        {
+            "poolAddress": "0x1F78661cdD95DB4A9473a5E158Ab8afBB94E0f6A"
+        }
+    ],
+    [
+        {
+            "token": "AGVC"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x335b3DE66B741d6FEd79C0BffB14C928635d3bC3"
+        }
+    ],
+    [
+        {
+            "token": "agEUR"
+        },
+        {
+            "token": "FEI"
+        },
+        {
+            "poolAddress": "0xF89CE5eD65737dA8440411544b0499c9FaD323B2"
+        }
+    ],
+    [
+        {
+            "token": "AGFI"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xC366336dC7cf8131D4e538Bc0205E603014743F0"
+        }
+    ],
+    [
+        {
+            "token": "AGRS"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xd89F1ef41A40dB980883c4518387E682CdF83C7d"
+        }
+    ],
+    [
+        {
+            "token": "AID"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xfaE7F757E4d32583e40fE1Bd55C8c1C651bA0D1C"
+        }
+    ],
+    [
+        {
+            "token": "AIDI"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xA7cC68376682FF7E861AC4e616486407f944E672"
+        }
+    ],
+    [
+        {
+            "token": "AIDOC"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xcB6B602EE40Ea8816Dfc845340FD3208088fD94F"
+        }
+    ],
+    [
+        {
+            "token": "AIN"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x8364EbA9018F5Be10Dd198Ea6cDCfDF0306C837b"
+        }
+    ],
+    [
+        {
+            "token": "AIOZ"
+        },
+        {
+            "token": "URQA"
+        },
+        {
+            "poolAddress": "0x9D799e7514610504e624Bf7eA86e13362217370d"
+        }
+    ],
+    [
+        {
+            "token": "AIOZ"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xf956cdc8F43637F34F4BE368fA1Cb7DA01D622Be"
+        }
+    ],
+    [
+        {
+            "token": "AIRx"
+        },
+        {
+            "token": "UMA"
+        },
+        {
+            "poolAddress": "0x1e76E0A97F1a98ee48a75023F467041626fA4084"
+        }
+    ],
+    [
+        {
+            "token": "AIRx"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xfEa5521Ea47d5b8211683Dfab9318be1B50cA292"
+        }
+    ],
+    [
+        {
+            "token": "ARAID"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xBC8eD8C2ad89C14e55ee35d933F83E41cbD11121"
+        }
+    ],
+    [
+        {
+            "token": "AIRSHIB"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x87e256A2Ca19B1649D5d39a467a8bdCd04499587"
+        }
+    ],
+    [
+        {
+            "token": "AST"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xcA9c4cC09e901F4d2AA072ed1AA95DCbE3A7A8E5"
+        }
+    ],
+    [
+        {
+            "token": "AKAMARU"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x5b30BD6C94394B1f128A99afDA8f1CB42e32F260"
+        }
+    ],
+    [
+        {
+            "token": "AKIRA"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xE92A453f43Dcf314c123EA141683742941BC74Bc"
+        }
+    ],
+    [
+        {
+            "token": "AKITA"
+        },
+        {
+            "token": "ELON"
+        },
+        {
+            "poolAddress": "0xb23E00209a280A196E430BC09002ADD40CF2E3c8"
+        }
+    ],
+    [
+        {
+            "token": "AKITA"
+        },
+        {
+            "token": "SANSHU"
+        },
+        {
+            "poolAddress": "0xDAe40Cb431f697c4e8E73745cbEDC1A42371dA77"
+        }
+    ],
+    [
+        {
+            "token": "AKITA"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xDA3A20aaD0C34fA742BD9813d45Bbf67c787aE0b"
+        }
+    ],
+    [
+        {
+            "token": "AKRO"
+        },
+        {
+            "token": "JRT"
+        },
+        {
+            "poolAddress": "0x52D93c0b323A3E41A742E358CD62E55a1E46922a"
+        }
+    ],
+    [
+        {
+            "token": "AKRO"
+        },
+        {
+            "token": "DZAR"
+        },
+        {
+            "poolAddress": "0x1C1dEB961C53896e4E74b4777377Afbe0D82fE17"
+        }
+    ],
+    [
+        {
+            "token": "AKRO"
+        },
+        {
+            "token": "HEX"
+        },
+        {
+            "poolAddress": "0x7B16e70F0ec46c292E5f69CFBA49743B744d5132"
+        }
+    ],
+    [
+        {
+            "token": "AKRO"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x8Cb77eA869DeF8f7fdEab9E4dA6cF02897bbF076"
+        }
+    ],
+    [
+        {
+            "token": "AKRO"
+        },
+        {
+            "token": "STAKE"
+        },
+        {
+            "poolAddress": "0x6C74F55B08c1b45732d983edfa3e2D5E549619Ed"
+        }
+    ],
+    [
+        {
+            "token": "ADEL"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xad19b7e2B1DaC6CEA46b18EEC731981C08E6f08E"
+        }
+    ],
+    [
+        {
+            "token": "ALD"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xED6c2F053AF48Cba6cBC0958124671376f01A903"
+        }
+    ],
+    [
+        {
+            "token": "ALCX"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x352E5EeE2D9C957710be656534D51Fbb3Ce074d6"
+        }
+    ],
+    [
+        {
+            "token": "ALCH"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xfb0997696919Ba43275F4156F9550b9f68F5edfE"
+        }
+    ],
+    [
+        {
+            "token": "ACH"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xc64518df38F4Fda631F6341e5eEE096Cc80fb6FA"
+        }
+    ],
+    [
+        {
+            "token": "ACH"
+        },
+        {
+            "token": "WBTC"
+        },
+        {
+            "poolAddress": "0x4e2362b44C778880Ae4B11d020A98041e16414bf"
+        }
+    ],
+    [
+        {
+            "token": "ALEPH"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x29bA3D899E8a819Cf920adAfF53ef1CF31969E66"
+        }
+    ],
+    [
+        {
+            "token": "ALEX"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x9414D373b476229be6CEC84f6E4843a9F9407FE8"
+        }
+    ],
+    [
+        {
+            "token": "ALG"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xF55C503bED3b1Aa9b646A878A66B441F35AfE3fC"
+        }
+    ],
+    [
+        {
+            "token": "AVS"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x2B370C11B6b66a1E6B743F24aa67991801Ec309e"
+        }
+    ],
+    [
+        {
+            "token": "ALIEN"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0xcc82Ee8654e3707F74Ec74ed0F819A192f856e1e"
+        }
+    ],
+    [
+        {
+            "token": "ALIS"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": "0x2DCF69788f60E1C2Fe50c2E795177CC5a07455Ef"
+        }
     ]
+   
+
 ]

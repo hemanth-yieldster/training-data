@@ -158,5 +158,72 @@
                 "0xD6f8E8068012622d995744cc135A7e8e680E2E76"
             ]
         }
+    ],
+    [
+        {
+            "token": "USDT"
+        },
+        {
+            "token": "EVRY"
+        },
+        {
+            "poolAddress": [
+                "0xdEb01e683FF0d2e3AdB852a03df28e1bA7c99774"
+            ]
+        }
+    ],
+    [
+        {
+            "token": "USDT"
+        },
+        {
+            "token": "EFI"
+        },
+        {
+            "poolAddress": [
+                "0x898E2fEF4cEf5592485251Fab6da7C819a2DF291"
+            ]
+        }
+    ],
+    [
+        {
+            "token": "USDT"
+        },
+        {
+            "token": "VNDC"
+        },
+        {
+            "poolAddress": [
+                "0x6f2cA3bEC75c120aae8BdC34e6f3410556171EC0"
+            ]
+        }
+    ],
+    [
+        {
+            "token": "USDT"
+        },
+        {
+            "token": "WETH"
+        },
+        {
+            "poolAddress": [
+                "0xf8467EF9de03E83B5a778Ac858EA5c2d1FC47188",
+                "0xcE9874C42DcE7fffbE5E48B026Ff1182733266Cb",
+                "0xCD9fD9Cf78CAD37b3a913681A6c3fD2Ce0606827"
+            ]
+        }
+    ],
+    [
+        {
+            "token": "USDT"
+        },
+        {
+            "token": "WBTC"
+        },
+        {
+            "poolAddress": [
+                "0xD343d5dba2FBa55EEF58189619c05e33CAB95cA1"
+            ]
+        }
     ]
 ]
