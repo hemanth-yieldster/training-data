@@ -36,7 +36,7 @@ function addressExtractor(line, index) {
   const arr=tempArray[0].split('"')
   console.log("trying to reach",arr[1]);
 
-  outArray.push({"token":arr[1]});
+  outArray.push(arr[1]);
 
   const tempArray2 = tempArray[1].split(",");
   const address = tempArray2[0].split('"');
@@ -61,14 +61,15 @@ async function wrapperFunction() {
       console.log("response : ", response);
       if (!(response == "0x0000000000000000000000000000000000000000")) {
        // console.log("response : ", response);
-        outArray.push({"poolAddress":response});
-        console.log(outArray);
+        outArray.push(response);
+       
         outArray2.push(outArray)
+        console.log(outArray2);
       
 
         }  
         outArray=[];
-    }fs.writeFile('./dataFile/uniswapV2File.json', JSON.stringify(outArray2),{ flag: 'w+' }, err => {
+    }fs.writeFile('./dataFile/uniswapV2File.txt', outArray2,{ flag: 'w+' }, err => {
       if (err) {
         console.error(err)
         return

@@ -12,8 +12,12 @@ const kyberSwapV2Factory = new web3.eth.Contract(
   "0x833e4083B7ae46CeA85695c4f7ed25CDAd8886dE"
 );
 
+// const loadFiles = fs.readFileSync(
+//   "/home/dxuser/Desktop/kyber/assetList.txt",
+//   "utf8"
+// );
 const loadFiles = fs.readFileSync(
-  "/home/dxuser/project file/training-data/assetList.txt",
+  "/home/dxuser/Desktop/kyber/assetList.txt",
   "utf8"
 );
 
@@ -37,7 +41,7 @@ function addressExtractor(line, index) {
   const tempArray = line.split(":");
   const arr=tempArray[0].split('"')
   console.log("try to reach:",arr[1]);
-  outArray.push({"token":arr[1]});
+  outArray.push(arr[1]);
   const tempArray2 = tempArray[1].split(",");
   const address = tempArray2[0].split('"');
   return address[1];
@@ -59,19 +63,27 @@ async function wrapperFunction() {
 
       if (response.length > 0) {
         console.log("response : ", response);
-        outArray.push({"poolAddress":response});
-        console.log(outArray);
+        outArray.push(response);
+        console.log(outArray2);
         outArray2.push(outArray)
       }
       outArray=[];
+      console.log(outArray2)
+      fs.writeFile('./dataFile/kyberswapV2File.txt',outArray2,{ flag: 'w+' }, err => {
+        if (err) {
+          console.error(err)
+          return
+        }
+        //file written successfully
+      })
     }
-    fs.writeFile('./dataFile/kyberswapV2File.json', JSON.stringify(outArray2),{ flag: 'w+' }, err => {
-      if (err) {
-        console.error(err)
-        return
-      }
-      //file written successfully
-    })
+    // fs.writeFile('./dataFile/kyberswapV2File.json', JSON.stringify(outArray2),{ flag: 'w+' }, err => {
+    //   if (err) {
+    //     console.error(err)
+    //     return
+    //   }
+    //   //file written successfully
+    // })
   }
   
 }

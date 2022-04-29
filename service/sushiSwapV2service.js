@@ -12,11 +12,14 @@ const sushiSwapV2Factory = new web3.eth.Contract(
   "0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac"
 );
 
+// const loadFiles = fs.readFileSync(
+//   "/home/dxuser/project file/training-data/assetList.txt",
+//   "utf8"
+// );
 const loadFiles = fs.readFileSync(
-  "/home/dxuser/project file/training-data/assetList.txt",
+  "/home/dxuser/Documents/assetList.txt",
   "utf8"
 );
-
 
 
 let lineArray = [];
@@ -35,7 +38,7 @@ function addressExtractor(line, index) {
   const tempArray = line.split(":");
   const arr=tempArray[0].split('"')
   console.log("trying to reach",arr[1]);
-  outArray.push({"token":arr[1]});
+  outArray.push(arr[1]);
   const tempArray2 = tempArray[1].split(",");
   const address = tempArray2[0].split('"');
   return address[1];
@@ -59,19 +62,20 @@ async function wrapperFunction() {
       console.log("response : ", response);
       if (!(response == "0x0000000000000000000000000000000000000000")) {
         //console.log("response : ", response);
-        outArray.push({"poolAddress":response});
+        outArray.push(response);
         console.log(outArray);
         outArray2.push(outArray)
       }
       outArray=[];
+      fs.writeFile('./dataFile/sushiswapV2File.txt', outArray2,{ flag: 'w+' }, err => {
+        if (err) {
+          console.error(err)
+          return
+        }
+        //file written successfully
+      })
     }
-    fs.writeFile('./dataFile/sushiswapV2File.json', JSON.stringify(outArray2),{ flag: 'w+' }, err => {
-      if (err) {
-        console.error(err)
-        return
-      }
-      //file written successfully
-    })
+   
   }
  
 }
