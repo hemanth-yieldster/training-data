@@ -1,6 +1,7 @@
 const Web3 = require("web3");
 const web3 = new Web3(
-  "https://mainnet.infura.io/v3/1f0e05aa0b5c4ece90db3baebbf4ec4d"
+ // "https://mainnet.infura.io/v3/1f0e05aa0b5c4ece90db3baebbf4ec4d"
+  "https://mainnet.infura.io/v3/c90ce75b4af34a5885acdcc9a3b788fb"
 );
 const fs = require("fs");
 
@@ -12,12 +13,8 @@ const sushiSwapV2Factory = new web3.eth.Contract(
   "0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac"
 );
 
-// const loadFiles = fs.readFileSync(
-//   "/home/dxuser/project file/training-data/assetList.txt",
-//   "utf8"
-// );
 const loadFiles = fs.readFileSync(
-  "/home/dxuser/Documents/assetList.txt",
+  "/home/dxuser/project file/training-data/sushiassetList.txt",
   "utf8"
 );
 
@@ -67,6 +64,7 @@ async function wrapperFunction() {
         outArray2.push(outArray)
       }
       outArray=[];
+      console.log(outArray2)
       fs.writeFile('./dataFile/sushiswapV2File.txt', outArray2,{ flag: 'w+' }, err => {
         if (err) {
           console.error(err)

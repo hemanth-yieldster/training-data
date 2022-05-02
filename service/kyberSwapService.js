@@ -12,14 +12,14 @@ const kyberSwapV2Factory = new web3.eth.Contract(
   "0x833e4083B7ae46CeA85695c4f7ed25CDAd8886dE"
 );
 
+const loadFiles = fs.readFileSync(
+  "/home/dxuser/project file/training-data/kyberassetList.txt",
+  "utf8"
+);
 // const loadFiles = fs.readFileSync(
 //   "/home/dxuser/Desktop/kyber/assetList.txt",
 //   "utf8"
 // );
-const loadFiles = fs.readFileSync(
-  "/home/dxuser/Desktop/kyber/assetList.txt",
-  "utf8"
-);
 
 
 
@@ -60,6 +60,7 @@ async function wrapperFunction() {
       const response = await kyberSwapV2Factory.methods
       .getPools(address1, address2)
       .call();
+      console.log("response array:===>",response)
 
       if (response.length > 0) {
         console.log("response : ", response);

@@ -1,6 +1,7 @@
 const Web3 = require("web3");
 const web3 = new Web3(
-  "https://mainnet.infura.io/v3/1f0e05aa0b5c4ece90db3baebbf4ec4d"
+ "https://mainnet.infura.io/v3/1f0e05aa0b5c4ece90db3baebbf4ec4d"
+  // "https://mainnet.infura.io/v3/c90ce75b4af34a5885acdcc9a3b788fb"
 );
 const fs = require("fs");
 
@@ -64,11 +65,11 @@ async function wrapperFunction() {
         outArray.push(response);
        
         outArray2.push(outArray)
-        console.log(outArray2);
       
 
         }  
         outArray=[];
+        console.log(outArray2)
     }fs.writeFile('./dataFile/uniswapV2File.txt', outArray2,{ flag: 'w+' }, err => {
       if (err) {
         console.error(err)
