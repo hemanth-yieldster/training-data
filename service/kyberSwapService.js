@@ -13,7 +13,7 @@ const kyberSwapV2Factory = new web3.eth.Contract(
 );
 
 const loadFiles = fs.readFileSync(
-    "../training-data/sushiassetList.txt",
+    "../training-data/kyberassetList.txt",
     "utf8"
 );
 // const loadFiles = fs.readFileSync(
